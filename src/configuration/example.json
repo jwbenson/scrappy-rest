@@ -1,0 +1,9 @@
+{
+    "mongo": {
+        "host": "localhost",
+        "port": 27017,
+        "username": "12345-user",
+        "password": "12345-password",
+        "databaseName": "scrappy-rest-example"
+    }
+}

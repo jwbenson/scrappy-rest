@@ -1,6 +1,7 @@
 ############
 # ignore node_modules (use npm update)
 node_modules/
+src/configuration/index.json
 
 ###################
 # compiled sources

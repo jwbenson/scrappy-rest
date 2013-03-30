@@ -1,0 +1,2 @@
+{"ts":1364683674080,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1364683762084,"patch":[[{"diffs":[[1,"{\n    \"mongo\": {\n        \"host\": \"localhost\",\n        \"port\": 27017,\n        \"username\": \"12345-user\",\n        \"password\": \"12345-password\",\n        \"databaseName\": \"scrappy-rest-example\"\n    }\n}"]],"start1":0,"start2":0,"length1":0,"length2":195}]],"length":195,"saved":false}
