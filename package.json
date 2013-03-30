@@ -1,0 +1,21 @@
+{
+  "name": "basicrestapi",
+  "version": "0.1.0",
+  "private": false,
+  "author": "Jason Benson <projects@jasonbenson.com>",
+  "scripts": {
+    "start": "node src/app",
+    "test": "mocha test/index"
+  },
+  "dependencies": {
+    "express": ">= 3",
+    "mongo": ">= 0.9.6-7",
+    "JSV": "*",
+    "jstoxml": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "supertest": "*"
+  }
+  "license": "MIT"
+}

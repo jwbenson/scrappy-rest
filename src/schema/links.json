@@ -1,0 +1,61 @@
+{
+    "type" : "object",
+    "properties" : {
+        "title" : {
+            "description" : "Displayed asset title.",
+            "type" : "string",
+            "default": ""
+        },
+        "url" : {
+            "description" : "Displayed asset description.",
+            "type" : "string",
+            "format" : "uri",
+            "default": ""
+        },
+        "media" : {
+            "description" : "Media / not implemented.",
+            "type" : "string",
+            "format" : "any",
+            "default": ""
+        },
+        "section" : {
+            "description" : "Asset section.",
+            "type" : "string",
+            "default": ""
+        },
+        "tags" : {
+            "description" : "Asset tags",
+            "type" : "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "createdBy": {
+            "description" : "The user id of the creator of this asset",
+            "type" : "integer",
+            "default": 0
+        },
+        "route": {
+            "description" : "The named route of this asset",
+            "type": "string",
+            "default": ""
+        },
+        "shortRoute": {
+            "description": "The short route for this asset",
+            "type": "string",
+            "default": ""
+        },
+        "created": {
+            "description": "creation timestamp",
+            "type": "string"
+        },
+        "modified": {
+            "description": "modified timestamp",
+            "type": "string"
+        },
+        "published": {
+            "description": "published timestamp",
+            "type": "string"
+        }
+    }
+}
