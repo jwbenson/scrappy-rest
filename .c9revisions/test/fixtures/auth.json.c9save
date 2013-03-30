@@ -1,0 +1,4 @@
+{"ts":1364676048759,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1364676059309,"patch":[[{"diffs":[[1,"{\n    username: 'test',\n    password: 'test'\n}"]],"start1":0,"start2":0,"length1":0,"length2":46}]],"length":46,"saved":false}
+{"ts":1364676179773,"patch":[[{"diffs":[[0,"    "],[1,"'"],[0,"username"],[1,"'"],[0,": 't"]],"start1":2,"start2":2,"length1":16,"length2":18},{"diffs":[[0,"    "],[1,"'"],[0,"password"],[1,"'"],[0,": 't"]],"start1":26,"start2":26,"length1":16,"length2":18}]],"length":50,"saved":false}
+{"ts":1364676290984,"patch":[[{"diffs":[[0,"    "],[-1,"'"],[1,"\""],[0,"username"],[-1,"': '"],[1,"\": \""],[0,"test"],[-1,"'"],[1,"\""],[0,",\n    "],[-1,"'"],[1,"\""],[0,"password"],[-1,"': '"],[1,"\": \""],[0,"test"],[-1,"'"],[1,"\""],[0,"\n}"]],"start1":2,"start2":2,"length1":48,"length2":48}]],"length":50,"saved":false}
