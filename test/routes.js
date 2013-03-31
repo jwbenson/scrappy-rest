@@ -1,3 +1,6 @@
+var request = require('supertest'),
+    assert = require('assert');
+    
 describe('GET /', function() {
     it('should exist', function(done) {
         request(app)

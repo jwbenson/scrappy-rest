@@ -34,7 +34,6 @@ _schema.validate = function (obj, schema, callback) {
         if(typeValue == "integer" && typeof obj[prop] == 'string') {
             if(!isNaN(parseInt(obj[prop], 10)) && isFinite(obj[prop])) {
                 obj[prop] = parseInt(obj[prop], 10);
-                console.log(prop)
             }
         }
 	}

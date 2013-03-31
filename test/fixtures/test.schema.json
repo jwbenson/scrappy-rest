@@ -1,0 +1,16 @@
+{
+    "type" : "object",
+    "properties" : {
+        "name" : {
+            "description" : "name of the test asset",
+            "type" : "string",
+            "default": "default"
+        },
+        "testNumber" : {
+            "description" : "test asset number",
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 500
+        }
+    }
+}
