@@ -1,5 +1,6 @@
 var express = require('express'),
     routes = require('./routes'),
+    http = require('http'),
     override = require('./middleware/override'),
     app = express(),
     port = process.env.PORT || process.env.VMC_APP_PORT || 3001,
@@ -27,9 +28,13 @@ app.configure('development', function () {
 	app.use(express.errorHandler());
 });
 
+var server = http.createServer(app);
 routes.init(app);
-app.listen(port);
-console.log('Server listening on port ', port);
+server.on("listening", function () {
+    console.log('Server listening on port ', port);
+});
+server.listen(port);
+
 
 //export server for test framework
-module.exports = app;
+module.exports = server;
