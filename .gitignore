@@ -5,6 +5,7 @@ node_modules/*
 src/configuration/index.json
 .c9revisions/*
 .c9revisions
+.c9revisions/
 
 ###################
 # compiled sources
