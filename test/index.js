@@ -1,29 +1,20 @@
 var request = require('supertest'),
     assert = require('assert'),
     app = require('../src/app'),
-    auth = require('./fixtures/auth');
+    ip = process.env.IP || process.env.VMC_APP_IP || '0.0.0.0',
+    port = process.env.PORT || process.env.VM_APP_PORT || '3001';
 
-describe('Route Tests', function() {
-
-    //wait for database init & route init
-	before(function(done) {
-		app.on("listening", function() {
-			done();
-		});
-	});
-
-	//cleanup
-	after(function(done){
-		app.close();		
-		done();
-	});
-
-	//get index
-	it("GET /, should return text/html 200 OK", function(done) {
-		request(app)
-			.get('/')
-			.expect('Content-Type', /html/)
-			.expect(200, done);
-	});
-	
+    
+describe('POST /', function(){
+  it('should exist', function(done){
+    request(app)
+        .post('/')
+        .send({
+            'img_uri' : 'foobar'
+        })
+        .expect(200)
+        .end(function(err, res){
+            done();
+        })
+  })
 });
