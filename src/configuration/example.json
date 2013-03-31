@@ -4,8 +4,8 @@
         "port": 27017,
         "username": "12345-user",
         "password": "12345-password",
-        "db": "scrappy-rest-example"
+        "db": "scrappy-rest-example",
+        "pageSize": 50
     },
     
     "cookieParserSalt": "You secret value here"
-}

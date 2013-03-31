@@ -25,7 +25,7 @@ var route = {
         translator.send(req, res, schema.schemas[req.params.name])  
     },
     find: function(req, res) {
-        getCollection(req).find({}, {limit: 50}).toArray(function(err, objects){
+        getCollection(req).find({}, {limit: config.mongo.pageSize}).toArray(function(err, objects){
             if(err) { throw err; }
             translator.send(req, res, objects);
         });
