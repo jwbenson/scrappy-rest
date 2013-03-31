@@ -5,7 +5,7 @@
   "author": "Jason Benson <projects@jasonbenson.com>",
   "scripts": {
     "start": "node src/app",
-    "test": "mocha test/index"
+    "test": "node test"
   },
   "dependencies": {
     "express": ">= 3",
