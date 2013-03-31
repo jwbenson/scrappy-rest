@@ -16,4 +16,4 @@ run:
   
 test:
 
-  mocha test/index
+  node test
