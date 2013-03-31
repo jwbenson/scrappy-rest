@@ -7,6 +7,8 @@ installation:
 
  1. clone 
  2. npm update
+ 3. copy src/configuration.json to src/configurationindex.json
+ 4. update values in src/configuration/index.json
 
 run:
 
