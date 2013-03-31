@@ -3,7 +3,8 @@
 var JSV = require('JSV').JSV;
 var env = JSV.createEnvironment();
 var schemas = {
-    links: require('./links')
+    links: require('./links'),
+    test: require('./test')
 };
 
 var _schema = {

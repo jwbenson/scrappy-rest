@@ -3,7 +3,8 @@ var express = require('express'),
     override = require('./middleware/override'),
     app = express(),
     port = process.env.PORT || process.env.VMC_APP_PORT || 3001,
-    ip = process.env.IP || process.env.VMC_APP_IP || '0.0.0.0';
+    ip = process.env.IP || process.env.VMC_APP_IP || '0.0.0.0',
+    config = require('./config');
 
 app.configure(function () {
     app.set('port', port);
@@ -13,7 +14,7 @@ app.configure(function () {
 	app.use(override.acceptOverride());
 	app.use(override.methodOverride());
 	app.use(express.logger('dev'));
-	app.use(express.cookieParser('Your secret key here'));
+	app.use(express.cookieParser(config.cookieParserSalt));
 	app.use(express.session());
 	app.use(app.router);
     

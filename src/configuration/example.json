@@ -1,9 +1,11 @@
 {
     "mongo": {
-        "host": "localhost",
+        "hostname": "localhost",
         "port": 27017,
         "username": "12345-user",
         "password": "12345-password",
-        "databaseName": "scrappy-rest-example"
-    }
+        "db": "scrappy-rest-example"
+    },
+    
+    "cookieParserSalt": "You secret value here"
 }

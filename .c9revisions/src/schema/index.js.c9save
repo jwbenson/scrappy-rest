@@ -7,3 +7,4 @@
 {"ts":1364675098996,"patch":[[{"diffs":[[0,"ks')\n};\n"],[1,"\n"],[0,"var _sch"]],"start1":106,"start2":106,"length1":16,"length2":17}]],"length":1472,"saved":false}
 {"ts":1364675306570,"patch":[[{"diffs":[[0,"};\n\n"],[1,"module."],[0,"exports"],[-1,".schema"],[0," = _"]],"start1":1443,"start2":1443,"length1":22,"length2":22}]],"length":1472,"saved":false}
 {"contributors":[],"silentsave":false,"ts":1364677033260,"patch":[[{"diffs":[[1,"//work in progress\n\n"],[0,"var JSV = re"]],"start1":0,"start2":0,"length1":12,"length2":32}]],"length":1492,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1364688948733,"patch":[[{"diffs":[[0,"/links')"],[1,",\n    test: require('./test')"],[0,"\n};\n\nvar"]],"start1":122,"start2":122,"length1":16,"length2":45}]],"length":1521,"saved":false}

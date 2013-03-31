@@ -34,3 +34,7 @@
 {"ts":1364677595479,"patch":[[{"diffs":[[0,"er('"],[-1,"we89f2h039822@#$(*nf2309r82hn2@@#$890j"],[1,"Your secret key here"],[0,"'));"]],"start1":538,"start2":538,"length1":46,"length2":28}]],"length":993,"saved":false}
 {"ts":1364677613428,"patch":[[{"diffs":[[0," //stati"],[-1,"i"],[0,"c\n    //"]],"start1":626,"start2":626,"length1":17,"length2":16}]],"length":992,"saved":false}
 {"ts":1364677714583,"patch":[[{"diffs":[[0,");\n});\n\n"],[-1,"\n"],[0,"app.conf"]],"start1":699,"start2":699,"length1":17,"length2":16}]],"length":991,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1364688596319,"patch":[[{"diffs":[[0,"0.0.0.0'"],[1,",\n    config = require('./config')"],[0,";\n\napp.c"]],"start1":257,"start2":257,"length1":16,"length2":50}]],"length":1025,"saved":false}
+{"ts":1364688741555,"patch":[[{"diffs":[[0,"ser("],[-1,"'Your secret key here'"],[1,"config.cookieParserSalt"],[0,"));\n"]],"start1":571,"start2":571,"length1":30,"length2":31}]],"length":1026,"saved":false}
+{"ts":1364688786321,"patch":[[{"diffs":[[0,"er('dev'));\n"],[1,"    console.log(config.cookieParserSalt);\n"],[0,"\tapp.use(exp"]],"start1":533,"start2":533,"length1":24,"length2":66}]],"length":1068,"saved":false}
+{"ts":1364688849223,"patch":[[{"diffs":[[0,"));\n"],[-1,"    console.log(config.cookieParserSalt);\n"],[0,"\tapp"]],"start1":541,"start2":541,"length1":50,"length2":8}]],"length":1026,"saved":false}
