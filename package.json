@@ -16,6 +16,6 @@
   "devDependencies": {
     "mocha": "*",
     "supertest": "*"
-  }
+  },
   "license": "MIT"
 }
