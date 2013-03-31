@@ -1,10 +1,9 @@
 var request = require('supertest'),
     assert = require('assert'),
-    app = null;
+    app = null,
     ip = process.env.IP || process.env.VMC_APP_IP || '0.0.0.0',
     port = process.env.PORT || process.env.VM_APP_PORT || '3001',
     host = 'http://' + ip + ':' + port;
-    host = 'http://bapi.jbenson.c9.io';
 
 describe('GET /', function() {
 
