@@ -48,7 +48,7 @@ var route = {
     },
     deleteItem: function (req, res) {
         throw("not implemented");
-        var collection = getCollection(req);
+        getCollection(req);
         translator.send(req, res, '')
     }
 };
