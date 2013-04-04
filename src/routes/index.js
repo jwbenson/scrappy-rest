@@ -1,4 +1,5 @@
 var mongoskin = require('mongoskin');
+var odataParser = require("odata-parser");
 var schema = require('../schema');
 var translator = require('../middleware/formatTranslator');
 var config = require('../config');
@@ -25,7 +26,22 @@ var route = {
         translator.send(req, res, schema.schemas[req.params.name])  
     },
     find: function(req, res) {
-        getCollection(req).find({}, {limit: config.mongo.pageSize}).toArray(function(err, objects){
+        var options = {
+            limit: Math.min(req.query['$top'] || 1000000, config.mongo.pageSize),
+            skip: req.query['$skip'] || 0
+        };
+        var query = {};
+        
+        if(req.query['$orderby']) {
+            options.orderby = odataParser.parse("$orderby=" + req.query['$orderby']);
+        }
+
+        if(req.query.hasOwnProperty('$filter')) {
+            var obj = odataParser.parse("$filter=" + req.query["$filter"]);
+            console.log(obj);
+        }
+        
+        getCollection(req).find(query, options).toArray(function(err, objects){
             if(err) { throw err; }
             translator.send(req, res, objects);
         });

@@ -11,7 +11,8 @@
     "express": ">= 3",
     "mongoskin": ">= 0.5.0",
     "JSV": "*",
-    "jstoxml": "*"
+    "jstoxml": "*",
+    "odata-parser": "*"
   },
   "devDependencies": {
     "mocha": "*",
