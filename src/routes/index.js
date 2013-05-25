@@ -1,5 +1,5 @@
 var mongoskin = require('mongoskin');
-var odataParser = require("odata-parser");
+var traverse = require('traverse');
 var schema = require('../schema');
 var translator = require('../middleware/formatTranslator');
 var config = require('../config');
@@ -8,6 +8,7 @@ var ObjectID = db.bson_serializer.ObjectID;
 
 var getCollection = function(req){
     var name = req.params.collection;
+    
     if(!name){
         throw("collection not defined");
     }
@@ -15,6 +16,34 @@ var getCollection = function(req){
         throw("schema not found for " + name);
     }
     return db.collection(name);
+};
+
+//single level...
+var getQueryFilter = function(str) {
+    console.log(str);
+    var parsed = JSON.parse("{" + str + "}");
+    var query = {};
+    traverse(parsed).forEach(function (val) {
+        if(this.key == '$like') {
+            query[this.key] = new RegExp(val, "i");
+        }
+        else {
+            query[this.key] = val;
+        }
+        //console.log(x); //if (x < 0) this.update(x + 128);
+    });
+    return query;
+};
+
+var getQueryOptions = function (req) {
+    var options = {
+        limit: Math.min(req.query['$top'] || 1000000, config.mongo.pageSize),
+        skip: req.query['$skip'] || 0
+    };
+    if(req.query['$orderby']) {
+        options.orderby = odataParser.parse("$orderby=" + req.query['$orderby']);
+    }
+    return options
 };
 
 //todo, xml / html translator should be handled in a view and doesn't belong in middleware
@@ -26,44 +55,53 @@ var route = {
         translator.send(req, res, schema.schemas[req.params.name])  
     },
     find: function(req, res) {
-        var options = {
-            limit: Math.min(req.query['$top'] || 1000000, config.mongo.pageSize),
-            skip: req.query['$skip'] || 0
-        };
+        var options = getQueryOptions(req);
+        
         var query = {};
-        
-        if(req.query['$orderby']) {
-            options.orderby = odataParser.parse("$orderby=" + req.query['$orderby']);
-        }
-
-        if(req.query.hasOwnProperty('$filter')) {
-            var obj = odataParser.parse("$filter=" + req.query["$filter"]);
-            console.log(obj);
-        }
-        
         getCollection(req).find(query, options).toArray(function(err, objects){
             if(err) { throw err; }
             translator.send(req, res, objects);
         });
     },
+    findInKey: function (req, res) {
+        
+        var key = req.params.key;
+        var value = req.params.value;
+        
+        var options = getQueryOptions(req);
+        var query = {};
+        
+        query[key] = { $regex: value, $options: 'i' };
+        //
+        getCollection(req).find(query, options).toArray(function(err, items){
+            if(err) { throw err; }
+            console.log(items);
+            translator.send(req, res, items);
+        });
+    },
+    
     findById: function (req, res) {
         getCollection(req).findOne({_id: ObjectID.createFromHexString(req.params.id)}, function(err, item){
             if(err) { throw err; }
             translator.send(req, res, item);
         });
     },
+    
     addItem: function (req, res) {
-        throw("not implemented");
-        getCollection(req);
-        translator.send(req, res, {name: 'new item'});
+        var items = req.body;
+        var options = { safe: true };
+    
+        getCollection(req).insert(items, options, function (err, docs) {
+            if (err) { throw err; }		
+            translator.send(req, res, docs);
+        });
     },
-    updateItem: function (req, res) {
-        throw("not implemented");
+    
+    updateItem: function (req, res)  {
         getCollection(req);
         translator.sned(req, res, {name: 'update item'});
     },
     deleteItem: function (req, res) {
-        throw("not implemented");
         getCollection(req);
         translator.send(req, res, '')
     }
@@ -72,6 +110,7 @@ var route = {
 exports.init = function(app){
     app.get('/', route.index);
     app.get('/schema/:name', route.schema);
+    app.get('/search/:collection/:key/:value', route.findInKey);
     app.get('/:collection', route.find);
     app.get('/:collection/:id', route.findById);
     app.post('/:collection', route.addItem);

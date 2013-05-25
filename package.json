@@ -12,7 +12,8 @@
     "mongoskin": ">= 0.5.0",
     "JSV": "*",
     "jstoxml": "*",
-    "odata-parser": "*"
+    "odata-parser": "*",
+    "traverse": ">= 0.6.3"
   },
   "devDependencies": {
     "mocha": "*",

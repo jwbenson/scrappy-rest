@@ -5,7 +5,7 @@ var Mocha = require('mocha'),
     ip = process.env.IP || process.env.VMC_APP_IP || '0.0.0.0',
     port = process.env.PORT || process.env.VM_APP_PORT || '3001',
     host = 'http://' + ip + ':' + port;
-    
+
 var mocha = new Mocha();
 GLOBAL.host = host;
 GLOBAL.app = app;
