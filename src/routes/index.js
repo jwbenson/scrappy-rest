@@ -98,12 +98,23 @@ var route = {
     },
     
     updateItem: function (req, res)  {
-        getCollection(req);
-        translator.sned(req, res, {name: 'update item'});
+        var options = { safe: true };
+        var collection = getCollection(req);
+        console.log(req.body);
+        collection.save(req.body, options, function (err, results) {
+            if (err) { throw err; }    
+            collection.findOne({_id: ObjectID.createFromHexString(req.params.id)}, function(err, item){
+                if(err) { throw err; }
+                translator.send(req, res, item);
+            });
+        });
     },
     deleteItem: function (req, res) {
-        getCollection(req);
-        translator.send(req, res, '')
+        getCollection(req).remove({_id: ObjectID.createFromHexString(req.params.id)}, {safe: true}, function (err, result){
+            if(err) { throw err; }
+            translator.send(req, res, '')
+        });
+        
     }
 };
 
@@ -114,6 +125,7 @@ exports.init = function(app){
     app.get('/:collection', route.find);
     app.get('/:collection/:id', route.findById);
     app.post('/:collection', route.addItem);
-    app.put('/:collection/:id', route.updateItem);
     app.delete('/:collection/:id', route.deleteItem);
+    app.put('/:collection/:id', route.updateItem);
+    app.post('/:collection/:id', route.updateItem);
 };

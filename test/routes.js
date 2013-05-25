@@ -1,7 +1,7 @@
 var request = require('supertest')
   , assert  = require("assert");
   
-var host = 'http://localhost:3001';
+var host = 'http://bapi.jbenson.c9.io';
 
 request = request(host);
 
@@ -19,7 +19,7 @@ describe('Route Tests', function() {
             .expect('Content-Type', /json/, done);
     });
     
-    it('should insert a new document into test', function(done){
+    it('should insert and update and delete new document', function(done){
         request
             .post('/test')
             .send({ name: 'new item'})
@@ -27,7 +27,24 @@ describe('Route Tests', function() {
             .expect('Content-Type', /json/)
             .end(function(err, res){
                 if (err) return done(err);
-                done()
+                var item = res.body[0];
+                console.log(item);
+                request
+                    .put('/test/'+item._id)
+                    .send({ name: 'changed item', _id: item._id })
+                    .end(function(err, res){
+                        if (err) done(err);
+                        request
+                            .get('/test/'+item._id)
+                            .set('X-HTTP-METHOD', 'delete')
+                            .end(function(err, res){
+                                if (err) done(err);
+                                done();
+                            });
+                    });
+                
             });
     });
+    
+    
 });
