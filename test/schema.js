@@ -1,4 +1,4 @@
-var request = require('supertest'),
+/*var request = require('supertest'),
     assert = require('assert'),
     schema = require('../src/schema'),
     testSchema = require('./fixtures/test.schema.json');
@@ -31,4 +31,4 @@ describe('schema.validate', function() {
             done();
         });
     });
-});
+});*/
